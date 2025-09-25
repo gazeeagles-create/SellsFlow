@@ -1,0 +1,11 @@
+const pdfService = require('../services/pdfService');
+
+exports.gerarAtaVotacao = async (req, res) => {
+  try {
+    const sessao = await Sessao.findById(req.params.id).populate('votos');
+    const filename = await pdfService.gerarAta(sessao, sessao.votos);
+    res.download(`atas/${filename}`);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao gerar ata' });
+  }
+};
