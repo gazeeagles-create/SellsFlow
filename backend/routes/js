@@ -1,0 +1,3 @@
+const autenticar = require('../middleware/auth');
+
+router.get('/', autenticar, SessaoController.listarSessoes);
