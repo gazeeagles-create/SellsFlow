@@ -3,59 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistema VotaGov: Solução de votação eletrônica segura e integrada para comissões técnicas e sessões plenárias, conforme LGPD e ISO 27001.">
-    <meta name="keywords" content="votação eletrônica, sistema de votação, LGPD, ISO 27001">
-    <title>VotaGov</title>
+    <meta name="description" content="Sistema VotaGov - Solução de votação eletrônica segura e integrada para comissões e sessões plenárias.">
+    <title>Sistema VotaGov | Votação Eletrônica Inteligente</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Todos os estilos aqui permanecem iguais */
-        /* Adicione apenas: */
-        html { scroll-behavior: smooth; }
-        @media (max-width: 768px) {
-          nav ul {
-            display: none; flex-direction: column; background: var(--primary); position: absolute; top: 60px; left: 0; width: 100%; padding: 20px 0;
-          }
-          nav ul.show-menu { display: flex; }
-          .menu-toggle { display: block; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-        }
-    </style>
+    <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body>
-    <header>
+    <!-- Navbar -->
+    <nav class="navbar">
         <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-vote-yea"></i>
-                    <span>Sistema VotaGov</span>
-                </div>
-                <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" style="display: none;">
-                  <i class="fas fa-bars"></i>
-                </button>
-                <ul>
-                    <li><a href="#funcionalidades" title="Ver funcionalidades">Funcionalidades</a></li>
-                    <li><a href="#seguranca" title="Segurança e Conformidade">Segurança</a></li>
-                    <li><a href="#integracoes">Integrações</a></li>
-                    <li><a href="#suporte">Suporte</a></li>
-                </ul>
-                <button class="btn"><i class="fas fa-book-reader mr-2"></i>Solicite Demonstração</button>
-            </nav>
+            <div class="logo">
+                <img src="assets/logo.png" alt="Logo VotaGov" width="50">
+                <span>Sistema VotaGov</span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#funcionalidades">Funcionalidades</a></li>
+                <li><a href="#seguranca">Segurança</a></li>
+                <li><a href="#integracoes">Integrações</a></li>
+                <li><a href="#suporte">Suporte</a></li>
+                <li><a href="#demonstracao" class="btn-primary">Solicite Demonstração</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <!-- Restante do HTML igual -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Votação Eletrônica Segura e Transparente</h1>
+            <p>Sistema VotaGov: Tecnologia para comissões, sessões plenárias e votações eletrônicas, 100% conforme LGPD.</p>
+            <a href="#demonstracao" class="btn-primary">Agende sua Demonstração Gratuita</a>
+        </div>
+    </section>
 
-    <script>
-        document.getElementById('menu-toggle').style.display = 'block';
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-          document.querySelector('nav ul').classList.toggle('show-menu');
-        });
+    <!-- Funcionalidades -->
+    <section id="funcionalidades" class="section">
+        <div class="container">
+            <h2 class="section-title">Funcionalidades</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-vote-yea fa-3x"></i>
+                    <h3>Votação Eletrônica</h3>
+                    <p>Votação rápida, segura e auditável, com resultado instantâneo.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt fa-3x"></i>
+                    <h3>Segurança Avançada</h3>
+                    <p>Criptografia ponta-a-ponta e conformidade com LGPD.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-file-alt fa-3x"></i>
+                    <h3>Atas Automáticas</h3>
+                    <p>Relatórios gerados automaticamente em PDF.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users fa-3x"></i>
+                    <h3>Gestão de Comissões</h3>
+                    <p>Cadastro, pautas e acompanhamento de reuniões.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // IntersectionObserver para animações (igual ao seu, mas com debounce no scroll se necessário)
-    </script>
+    <!-- Segurança -->
+    <section id="seguranca" class="section bg-gray">
+        <div class="container">
+            <h2 class="section-title">Segurança e Conformidade</h2>
+            <div class="security-content">
+                <div class="security-text">
+                    <h3>Proteção Total dos Dados</h3>
+                    <p>O Sistema VotaGov segue rigorosamente as normas da LGPD (Lei Geral de Proteção de Dados) e ISO 27001.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Criptografia AES-256</li>
+                        <li><i class="fas fa-check-circle"></i> Autenticação de dois fatores (2FA)</li>
+                        <li><i class="fas fa-check-circle"></i> Logs de auditoria imutáveis</li>
+                        <li><i class="fas fa-check-circle"></i> Backup redundante em data centers seguros</li>
+                    </ul>
+                </div>
+                <div class="security-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=500&q=80" alt="Segurança de Dados">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrações -->
+    <section id="integracoes" class="section">
+        <div class="container">
+            <h2 class="section-title">Integrações</h2>
+            <p>Conecte o Sistema VotaGov com outras plataformas facilmente via APIs REST.</p>
+            <div class="integrations-grid">
+                <div class="integration-card">
+                    <i class="fas fa-plug fa-3x"></i>
+                    <h3>API REST</h3>
+                    <p>Integração com sistemas existentes (ERP, CRM, etc.)</p>
+                </div>
+                <div class="integration-card">
+                    <i class="fas fa-cloud fa-3x"></i>
+                    <h3>Cloud Services</h3>
+                    <p>Compatível com AWS, Azure e Google Cloud</p>
+                </div>
+                <div class="integration-card">
+                    <i class="fas fa-database fa-3x"></i>
+                    <h3>Bancos de Dados</h3>
+                    <p>Suporte a MySQL, PostgreSQL, MongoDB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suporte -->
+    <section id="suporte" class="section bg-gray">
+        <div class="container">
+            <h2 class="section-title">Suporte e Ajuda</h2>
+            <div class="support-content">
+                <div class="support-card">
+                    <i class="fas fa-headset fa-3x"></i>
+                    <h3>Suporte Técnico 24/7</h3>
+                    <p>Fale conosco por telefone, e-mail ou chat.</p>
+                    <a href="mailto:suporte@votagov.com.br" class="btn-secondary">suporte@votagov.com.br</a>
+                </div>
+                <div class="support-card">
+                    <i class="fas fa-book fa-3x"></i>
+                    <h3>Documentação Completa</h3>
+                    <p>Acesse nossos manuais e tutoriais.</p>
+                    <a href="#" class="btn-secondary">Ver Documentação</a>
+                </div>
+                <div class="support-card">
+                    <i class="fas fa-question-circle fa-3x"></i>
+                    <h3>Perguntas Frequentes</h3>
+                    <p>Tire suas dúvidas sobre o sistema.</p>
+                    <a href="#" class="btn-secondary">Ver FAQ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demonstração -->
+    <section id="demonstracao" class="section cta">
+        <div class="container">
+            <h2>Solicite uma Demonstração Gratuita</h2>
+            <p>Veja o Sistema VotaGov em ação e descubra como podemos ajudar sua instituição.</p>
+            <form class="demo-form">
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="tel" placeholder="Telefone" required>
+                <button type="submit" class="btn-primary">Agendar Demonstração</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/logo.png" alt="Logo VotaGov" width="80">
+                    <p>Sistema de votação eletrônica segura e integrada.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="#funcionalidades">Funcionalidades</a></li>
+                        <li><a href="#seguranca">Segurança</a></li>
+                        <li><a href="#integracoes">Integrações</a></li>
+                        <li><a href="#suporte">Suporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> contato@votagov.com.br</p>
+                    <p><i class="fas fa-phone"></i> (61) 3218-9000</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sistema VotaGov. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
 
 
