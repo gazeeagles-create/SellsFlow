@@ -1,345 +1,326 @@
-# SellsFlow - Sistema de Gestão de Vendas
-
-Vou criar uma landing page para o SellsFlow que apresente todas as funcionalidades solicitadas e os três planos (Gratuito, Starter e Premium).
-
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SellsFlow - Sistema de Gestão de Vendas</title>
+    <title>Sistema de Votação Eletrônica - Câmara Municipal</title>
     <style>
         :root {
-            --primary: #3498db;
-            --secondary: #2ecc71;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --gray: #95a5a6;
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #10b981;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --text-color: #334155;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f1f5f9;
         }
         
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
         /* Header */
         header {
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
+            box-shadow: var(--box-shadow);
+            position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
         }
         
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 1rem 0;
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--text-color);
         }
         
         .nav-links {
             display: flex;
             list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
+            gap: 2rem;
         }
         
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-color);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
         
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-color);
         }
         
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-        }
-        
-        .btn-secondary {
-            background-color: var(--secondary);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #27ae60;
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
         }
         
         /* Hero Section */
         .hero {
-            padding: 150px 0 100px;
-            background: linear-gradient(135deg, var(--primary), #1a5276);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
+            padding: 5rem 0;
             text-align: center;
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
         
         .hero p {
             font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
         
-        /* Features Section */
-        .section {
-            padding: 80px 0;
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .cta-button:hover {
+            background-color: #0da271;
+            transform: translateY(-2px);
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 3rem;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
         }
         
-        .section-title p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
         }
         
+        /* Features Grid */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
         
         .feature-card {
             background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         .feature-icon {
-            font-size: 40px;
-            color: var(--primary);
-            margin-bottom: 20px;
+            background-color: #e0f2fe;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
         }
         
         .feature-card h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
         
-        /* Pricing Section */
-        .pricing {
-            background-color: #f5f7fa;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .pricing-card {
+        /* Services */
+        .services {
             background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-item {
             text-align: center;
-            transition: transform 0.3s;
+            padding: 2rem;
         }
         
-        .pricing-card:hover {
-            transform: translateY(-5px);
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
         }
         
-        .pricing-header {
-            padding: 30px;
-            background-color: var(--light);
+        /* Technology */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
         }
         
-        .pricing-card.featured .pricing-header {
-            background-color: var(--primary);
-            color: white;
+        .tech-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            width: 150px;
         }
         
-        .pricing-name {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .pricing-price {
+        .tech-icon {
             font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .pricing-period {
-            color: var(--gray);
-        }
-        
-        .pricing-features {
-            padding: 30px;
-        }
-        
-        .pricing-features ul {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        
-        .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-        
-        /* Contact Section */
-        .contact {
-            background-color: var(--dark);
-            color: white;
-            text-align: center;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .form-group textarea {
-            height: 150px;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
         }
         
         /* Footer */
         footer {
-            background-color: #1a252f;
+            background-color: var(--dark-color);
             color: white;
-            padding: 50px 0 20px;
+            padding: 3rem 0 1.5rem;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
-        .footer-column h3 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--light-color);
         }
         
-        .footer-column ul {
+        .footer-section ul {
             list-style: none;
         }
         
-        .footer-column ul li {
-            margin-bottom: 10px;
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
         }
         
-        .footer-column a {
-            color: #bbb;
+        .footer-section a {
+            color: #cbd5e1;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: var(--transition);
         }
         
-        .footer-column a:hover {
+        .footer-section a:hover {
             color: white;
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #34495e;
-            color: #bbb;
+            padding-top: 1.5rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
             font-size: 0.9rem;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-            }
-            
             .nav-links {
-                margin-top: 15px;
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 1rem 0;
+                box-shadow: var(--box-shadow);
             }
             
-            .nav-links li {
-                margin: 0 10px;
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
             }
             
             .hero h1 {
                 font-size: 2rem;
             }
             
-            .hero p {
-                font-size: 1rem;
+            section {
+                padding: 3rem 0;
             }
         }
     </style>
@@ -349,12 +330,20 @@ Vou criar uma landing page para o SellsFlow que apresente todas as funcionalidad
     <header>
         <div class="container">
             <nav class="navbar">
-                <div class="logo">SellsFlow</div>
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwIDhWMTZMMTQgMTJMMTAgOFoiIGZpbGw9IiMxZTNhOGEiLz4KPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyQzIgMTcuNTIgNi40OCAyMiAxMiAyMkMxNy41MiAyMiAyMiAxNy41MiAyMiAxMkMyMiA2LjQ4IDE3LjUyIDIgMTIgMlpNMTIgMjBDNy41OCAyMCA0IDE2LjQyIDQgMTJDNCA3LjU4IDcuNTggNCAxMiA0QzE2LjQyIDQgMjAgNy41OCAyMCAxMkMyMCAxNi40MiAxNi40MiAyMCAxMiAyMFoiIGZpbGw9IiMzYjgyZjYiLz4KPC9zdmc+" alt="Logo">
+                    <div class="logo-text">
+                        <h1>Votação Eletrônica</h1>
+                        <p>Sistema para Câmara Municipal</p>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn">☰</button>
                 <ul class="nav-links">
-                    <li><a href="#features">Funcionalidades</a></li>
-                    <li><a href="#pricing">Planos</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                    <li><a href="#" class="btn">Login</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#funcionalidades">Funcionalidades</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#tecnologia">Tecnologia</a></li>
+                    <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -363,212 +352,183 @@ Vou criar uma landing page para o SellsFlow que apresente todas as funcionalidad
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Gestão de Vendas Simplificada</h1>
-            <p>O SellsFlow é a solução completa para gerenciar suas vendas, desde o controle de tarefas até o fluxo de caixa, tudo em uma única plataforma.</p>
-            <a href="#pricing" class="btn btn-secondary">Comece Grátis</a>
+            <h1>Sistema de Votação Eletrônica para o Plenário</h1>
+            <p>Solução completa em SaaS para modernizar os processos de votação da Câmara Municipal, com segurança, conformidade legal e suporte técnico especializado.</p>
+            <a href="#contato" class="cta-button">Solicitar Demonstração</a>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="section">
+    <!-- Sobre -->
+    <section id="sobre">
         <div class="container">
             <div class="section-title">
-                <h2>Funcionalidades Completas</h2>
-                <p>Descubra todas as ferramentas que o SellsFlow oferece para impulsionar suas vendas</p>
+                <h2>Sobre o Sistema</h2>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">✓</div>
-                    <h3>Controle de Tarefas</h3>
-                    <p>Organize e acompanhe todas as atividades da sua equipe de vendas.</p>
+                    <h3>Modalidade SaaS</h3>
+                    <p>Infraestrutura, servidores, conectividade, segurança e manutenção totalmente sob nossa responsabilidade.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Gestão de E-mails</h3>
-                    <p>Controle o envio de e-mails e mantenha o histórico de comunicação.</p>
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Conformidade Legal</h3>
+                    <p>Total aderência à legislação vigente, regimento interno da Câmara e conformidade com a LGPD.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Controle de Visitas</h3>
-                    <p>Agende e acompanhe visitas comerciais com clientes e prospects.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Contatos Telefônicos</h3>
-                    <p>Registre e gerencie todas as interações telefônicas com clientes.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Controle de Vendas</h3>
-                    <p>Acompanhe todo o processo de vendas, do lead ao fechamento.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Gestão de Comissões</h3>
-                    <p>Controle o recebimento e pagamento das comissões da equipe.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Controle de Recebimentos</h3>
-                    <p>Acompanhe os recebimentos das vendas realizadas.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Fluxo de Caixa</h3>
-                    <p>Tenha uma visão completa do fluxo de caixa da sua empresa.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Emissor de Nota Fiscal</h3>
-                    <p>Emita notas fiscais diretamente da plataforma.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">✓</div>
-                    <h3>Integração WhatsApp</h3>
-                    <p>Direcione clientes para atendimento via WhatsApp.</p>
+                    <div class="feature-icon">🌐</div>
+                    <h3>Compatibilidade Total</h3>
+                    <p>Funciona em múltiplos sistemas operacionais e navegadores modernos (Windows, Linux, MacOS, Android, iOS).</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="section pricing">
+    <!-- Funcionalidades -->
+    <section id="funcionalidades" class="services">
         <div class="container">
             <div class="section-title">
-                <h2>Planos e Preços</h2>
-                <p>Escolha o plano ideal para o seu negócio</p>
+                <h2>Funcionalidades Principais</h2>
             </div>
-            <div class="pricing-grid">
-                <!-- Plano Gratuito -->
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Gratuito</h3>
-                        <div class="pricing-price">R$ 0</div>
-                        <div class="pricing-period">por mês</div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>1 usuário</li>
-                            <li>Controle básico de tarefas</li>
-                            <li>100 e-mails/mês</li>
-                            <li>Relatórios simples</li>
-                            <li>Suporte por e-mail</li>
-                        </ul>
-                        <a href="#" class="btn">Começar Agora</a>
-                    </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">👥</div>
+                    <h3>Comissões Técnicas</h3>
+                    <p>Cadastro, gestão, pautas, reuniões simultâneas, votação eletrônica, registros de presenças e votos, atas automáticas.</p>
                 </div>
-                
-                <!-- Plano Starter -->
-                <div class="pricing-card featured">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Starter</h3>
-                        <div class="pricing-price">R$ 49</div>
-                        <div class="pricing-period">por mês</div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>3 usuários</li>
-                            <li>Controle completo de tarefas</li>
-                            <li>E-mails ilimitados</li>
-                            <li>Relatórios avançados</li>
-                            <li>Integração WhatsApp</li>
-                            <li>Suporte prioritário</li>
-                        </ul>
-                        <a href="#" class="btn btn-secondary">Assinar</a>
-                    </div>
+                <div class="service-item">
+                    <div class="service-icon">🏛️</div>
+                    <h3>Sessões Plenárias</h3>
+                    <p>Gestão completa de sessões, pautas automáticas e editáveis, controle de quórum, votação eletrônica, extrato individual.</p>
                 </div>
-                
-                <!-- Plano Premium -->
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-name">Premium</h3>
-                        <div class="pricing-price">R$ 99</div>
-                        <div class="pricing-period">por mês</div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>Usuários ilimitados</li>
-                            <li>Todas as funcionalidades</li>
-                            <li>Emissor de nota fiscal</li>
-                            <li>Gestão de comissões</li>
-                            <li>Fluxo de caixa completo</li>
-                            <li>Suporte 24/7</li>
-                        </ul>
-                        <a href="#" class="btn">Assinar</a>
-                    </div>
+                <div class="service-item">
+                    <div class="service-icon">🔗</div>
+                    <h3>Integração</h3>
+                    <p>API REST/HTTPS para integração com sistema legislativo existente, troca de informações sobre votações, presenças e documentos.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
+    <!-- Serviços -->
+    <section id="servicos">
         <div class="container">
             <div class="section-title">
-                <h2>Entre em Contato</h2>
-                <p>Tem alguma dúvida? Fale conosco!</p>
+                <h2>Serviços Incluídos</h2>
             </div>
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Nome</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensagem</label>
-                        <textarea id="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-secondary">Enviar Mensagem</button>
-                </form>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Implantação</h3>
+                    <p>Configuração completa do sistema de acordo com as necessidades específicas da Câmara.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h3>Suporte Técnico</h3>
+                    <p>Disponível durante a realização das reuniões e sessões para garantir funcionamento contínuo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Treinamento</h3>
+                    <p>Treinamento inicial presencial e treinamentos adicionais sob demanda para toda a equipe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Hospedagem</h3>
+                    <p>Infraestrutura em nuvem localizada no Brasil com alta disponibilidade e segurança.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
+    <!-- Tecnologia -->
+    <section id="tecnologia">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ambiente Tecnológico</h2>
+            </div>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                Nossa infraestrutura atende às mais rigorosas normas de segurança e disponibilidade, garantindo o funcionamento contínuo do sistema.
+            </p>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <div class="tech-icon">🔒</div>
+                    <h4>HTTPS</h4>
+                    <p>Protocolo Seguro</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🗄️</div>
+                    <h4>SQL</h4>
+                    <p>Banco de Dados</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">☁️</div>
+                    <h4>Nuvem</h4>
+                    <p>Infraestrutura</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📊</div>
+                    <h4>ISO 27001</h4>
+                    <p>Certificação</p>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">⚡</div>
+                    <h4>99,95%</h4>
+                    <p>Disponibilidade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <footer id="contato">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>SellsFlow</h3>
-                    <p>O sistema de gestão de vendas mais completo do mercado.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Links Rápidos</h3>
-                    <ul>
-                        <li><a href="#features">Funcionalidades</a></li>
-                        <li><a href="#pricing">Planos</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
+                <div class="footer-section">
                     <h3>Contato</h3>
                     <ul>
-                        <li>Email: contato@sellsflow.com</li>
-                        <li>WhatsApp: (11) 99999-9999</li>
+                        <li>Email: contato@votacaoeletronica.com.br</li>
+                        <li>Telefone: (11) 1234-5678</li>
+                        <li>Endereço: Av. Paulista, 1000 - São Paulo/SP</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#sobre">Sobre o Sistema</a></li>
+                        <li><a href="#funcionalidades">Funcionalidades</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#tecnologia">Tecnologia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Documentação</h3>
+                    <ul>
+                        <li><a href="#">Manual do Usuário</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Conformidade LGPD</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 SellsFlow. Todos os direitos reservados.</p>
+                <p>&copy; 2023 Sistema de Votação Eletrônica para Câmara Municipal. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+        // Menu mobile
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
